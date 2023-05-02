@@ -1,0 +1,14 @@
+#scroll::-webkit-scrollbar {
+  margin-left: 2px;
+  width: 0px;
+}
+
+#scroll::-webkit-scrollbar-thumb {
+  background: #aac7fb;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#scroll::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
