@@ -55,7 +55,7 @@ const CardWeather = ({ dataCurrent }) => {
         {/* <p className='flex flex-row items-center'><WiThermometer />min: {Math.round(dataCurrent.main.temp_min - 273.15)}<WiCelsius /></p> */}
         {/* <p className='flex flex-row items-center'><WiThermometer />max: {Math.round(dataCurrent.main.temp_max - 273.15)}<WiCelsius /></p> */}
       </div>
-      <div className='w-[80%] px-4 py-2 rounded-2xl bg-[#ffffff5d] h-[40%] font-medium'>
+      <div className='w-[80%] px-4 py-2 rounded-2xl bg-[#015d9296] h-[40%] font-medium'>
         <span className='flex flex-row items-center justify-between w-full'><p className='flex flex-row items-center'><WiHumidity /> Humidity:</p><p> {Math.round(dataCurrent.main.temp_min - 273.15)}%</p></span>
         <span className='flex flex-row items-center justify-between w-full'><p className='flex flex-row items-center'><WiBarometer /> Pressure:</p><p> {dataCurrent.main.pressure}hPa</p></span>
         <span className='flex flex-row items-center justify-between w-full'><p className='flex flex-row items-center'><WiThermometer /> Feels Like:</p><p> {Math.round(dataCurrent.main.feels_like - 273.15)}%</p></span>
