@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoLocation } from 'react-icons/go';
 import { WiThermometer, WiHumidity, WiBarometer, WiStrongWind, WiWindDeg } from 'react-icons/wi';
 import { MdVisibility } from 'react-icons/md';
+import moment from 'moment';
 
 export const convertString = (str) => {
   var strArr = str.toLowerCase().split(' ');
@@ -10,11 +11,34 @@ export const convertString = (str) => {
   });
   return result.join(' ');
 }
+
+
 const CardWeather = ({ dataCurrent }) => {
+  const [bg, setBg] = useState(``)
+  const [hour, setHour] = useState(moment().hours())
+  useEffect(() => {
+    setInterval(() => {
+      setHour(moment().hours())
+
+
+      if (hour >= 6 && hour <= 12) {
+        setBg('bg-gradient-to-b from-[#BCE6FF] to-[#53A6D8]')
+      }
+      else if (hour > 12 && hour < 18) {
+        setBg('bg-gradient-to-b from-[#FFBE88] to-[#E7B7C8]')
+      } else if (hour >= 18 && hour <= 24) {
+        setBg('bg-gradient-to-b from-[#1F2F98] to-[#4ADEDE]')
+      } else {
+        setBg('bg-gradient-to-b from-[#0B0742] to-[#120C6E]')
+      }
+    }, 1)
+  }, [hour])
+
+
   const urlIcon = dataCurrent ? `https://openweathermap.org/img/wn/${dataCurrent.weather[0].icon}@2x.png` : ''
   return (
     dataCurrent &&
-    <div className={`text-[#fefcfd] flex flex-col justify-start items-center p-2 py-4 w-[30%] rounded-2xl bg-[#7344b4] `}>
+    <div className={`text-[#fefcfd] flex flex-col justify-start items-center p-2 py-4 w-[30%] rounded-2xl ${bg}`}>
       <div className='flex flex-row justify-center items-center'>
         <span className='text-[#f15959]'><GoLocation /></span>
         <h1 className='text-2xl font-bold m-2'>{dataCurrent.name}</h1>

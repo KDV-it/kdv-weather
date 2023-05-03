@@ -24,20 +24,20 @@ const ResultWeather = ({ dataCurrent, Data5Day }) => {
       }
       setLstDay(temp);
     }
-  }, [])
+  }, [Data5Day])
 
   return (
-    <div className='w-[65%]  h-[60vh] bg-[#ffffff6c] flex flex-row justify-between p-4 rounded-2xl mt-2' >
+    <div className='w-[65%]  h-[60vh] bg-gradient-to-b from-[#bae3f2a5] to-[#abd1dcaf] flex flex-row justify-between p-4 rounded-2xl mt-2' >
       {/* current weather */}
       {dataCurrent &&
         <>
           <CardWeather dataCurrent={dataCurrent} />
-          <div className='rounded-2xl bg-[#124dff7b] h-full w-[70%] ml-4 p-2 px-4 flex flex-col justify-start items-center '>
+          <div className='rounded-2xl bg-gradient-to-b from-[#015C92] to-[#2D82B5] h-full w-[70%] ml-4 p-2 px-4 flex flex-col justify-start items-center '>
             <h1 className='font-medium text-[#fff] text-2xl m-2'>Next 5 days</h1>
 
             <div id='scroll' className='flex flex-col max-h-[60vh] overflow-y-auto w-full justify-start items-center border-y-2 p-2 mx-4'>
-              {lstDay.map(item => {
-                return <DayCard key={item.dt} data5Day={Data5Day} dt={item} />
+              {lstDay.map((item, index) => {
+                return <DayCard key={index} data5Day={Data5Day} dt={item} />
               })}
             </div>
           </div>

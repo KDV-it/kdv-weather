@@ -9,18 +9,9 @@ import './Scroll.css'
 
 const DayCard = ({ data5Day, dt, show = false }) => {
   const [isShow, setIsShow] = useState(show)
-  // const [data, setData] = useState()
-
-  // useEffect(() => {
-  //   setData(data5Day.list.filter(item => {
-  //     return new Date(item.dt * 1000).getDate() === new Date(dt * 1000).getDate()
-  //   }))
-  // }, [])
 
   const date = new Date(dt * 1000)
   let day = ''
-  // var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
   switch (date.getDay()) {
     case 0: day = 'Sun'
       break;
@@ -55,6 +46,7 @@ const DayCard = ({ data5Day, dt, show = false }) => {
           <div className='flex flex-col '>
             <p className='text-4xl mb-2'>{Math.round(data5Day.list[0].main.temp - 273.15)}°</p>
             <div className='flex flex-row justify-around'>
+
               <p className='text-center flex flex-row items-center mx-2 text-xs'><WiThermometer />{Math.round(data5Day.list[0].main.temp_min - 273.15)}°/{Math.round(data5Day.list[0].main.temp_max - 273.15)}°</p>
               <p className='text-center flex flex-row items-center mx-2 text-xs'><WiHumidity /> {data5Day.list[0].main.humidity}%</p>
               <p className='text-center flex flex-row items-center mx-2 text-xs'><WiBarometer />{data5Day.list[0].main.pressure}hPa</p>
@@ -82,9 +74,9 @@ const DayCard = ({ data5Day, dt, show = false }) => {
             data5Day.list.map(item => {
               if (new Date(item.dt * 1000).getDate() === new Date(dt * 1000).getDate())
                 return <HourCard key={item.dt} dataInHour={item} />
+              else return null
             })
           }
-
 
         </div>
       )}
